@@ -195,7 +195,6 @@ Tracked total: ${totalAmount > 0 ? '\$${totalAmount.toStringAsFixed(2)}' : 'N/A'
           Positioned.fill(
             child: Container(decoration: _buildBackground(context)),
           ),
-          const Positioned.fill(child: IgnorePointer(child: _BackdropOrbs())),
           SafeArea(
             child: Consumer<DocumentProvider>(
               builder: (context, docProvider, _) {
@@ -1227,89 +1226,3 @@ class _EmptyState extends StatelessWidget {
   }
 }
 
-class _BackdropOrbs extends StatefulWidget {
-  const _BackdropOrbs();
-
-  @override
-  State<_BackdropOrbs> createState() => _BackdropOrbsState();
-}
-
-class _BackdropOrbsState extends State<_BackdropOrbs>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 14),
-    )..repeat(reverse: true);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, _) {
-        final t = _controller.value;
-        return Stack(
-          children: [
-            Positioned(
-              top: -120 + (t * 30),
-              left: -80,
-              child: _GlowOrb(
-                size: 320,
-                color: const Color(0xFF6CC3D5).withValues(alpha: 0.24),
-              ),
-            ),
-            Positioned(
-              top: 180 - (t * 40),
-              right: -120,
-              child: _GlowOrb(
-                size: 360,
-                color: const Color(0xFFF5A14A).withValues(alpha: 0.2),
-              ),
-            ),
-            Positioned(
-              bottom: -140 + (t * 35),
-              left: 120,
-              child: _GlowOrb(
-                size: 300,
-                color: const Color(0xFF0B8C9F).withValues(alpha: 0.16),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _GlowOrb extends StatelessWidget {
-  final double size;
-  final Color color;
-
-  const _GlowOrb({required this.size, required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: RadialGradient(
-          colors: [color, Colors.transparent],
-          stops: const [0.25, 1],
-        ),
-      ),
-    );
-  }
-}
