@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: documind-ai
+    env: docker
+    plan: free
+    autoDeploy: true

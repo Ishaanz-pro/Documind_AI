@@ -1,0 +1,11 @@
+.git
+.gitignore
+.dart_tool
+build
+.idea
+.vscode
+android/.gradle
+ios/Pods
+macos/Pods
+*.iml
+.DS_Store

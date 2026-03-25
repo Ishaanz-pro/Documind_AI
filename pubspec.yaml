@@ -1,0 +1,47 @@
+name: documind_ai
+description: Smart Document Manager powered by AI
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI/Core
+  cupertino_icons: ^1.0.6
+  provider: ^6.1.1
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.2
+
+  # Camera/Image
+  camera: ^0.10.5+9
+  file_picker: ^10.3.2
+  syncfusion_flutter_pdf: ^29.1.39
+  
+  # Firebase
+  firebase_core: ^4.5.0
+  firebase_auth: ^6.2.0
+  cloud_firestore: ^6.1.3
+  firebase_storage: ^13.1.0
+
+  # Monetization
+  google_mobile_ads: ^3.0.0
+  purchases_flutter: ^6.3.0 # RevenueCat
+
+  # Network
+  http: ^1.2.0
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
